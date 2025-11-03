@@ -1,1 +1,5 @@
 .env
+
+metabase/*
+trino/trino-config/catalog/*
+trino/trino-data/*
