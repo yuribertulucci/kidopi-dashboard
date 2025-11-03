@@ -22,7 +22,7 @@ Configuração
   - Metabase/Postgres: variáveis comentadas em [.env.example](.env.example)
 
 Como rodar
-1. Ajuste `.env` (veja [.env.example](.env.example)).
+1. Ajuste o `.env` (veja [.env.example](.env.example)).
 2. Suba os containers:
    ```sh
    docker compose up -d
@@ -54,5 +54,8 @@ Arquivos importantes (resumo com links)
 - [trino/trino-config/node.properties](trino/trino-config/node.properties)
 - [trino/trino-config/catalog/mysql.properties](trino/trino-config/catalog/mysql.properties)
 - [trino/trino-config/catalog/mongodb.properties](trino/trino-config/catalog/mongodb.properties)
-- [metabase/urandom](metabase/urandom)
-- [metabase/pgdata-metabase](metabase/pgdata-metabase)
+
+Documentações específicas encontradas em:
+- [docs](docs)
+- [docs/trino](docs/trino) (específico do Trino)
+- [docs/metabase](docs/metabase) (específico do Metabase)
