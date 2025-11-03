@@ -51,6 +51,7 @@ if [ ! -z "$MONGODB_HOST" ]; then
     fi
     
     add_property "$MONGO_FILE" "mongodb.connection-url" "$MONGO_URL"
+    add_property "$MONGO_FILE" "mongodb.schema-collection" "${MONGODB_SCHEMA_COLLECTION:-trino-schemas}"
 fi
 
 echo "Catalogs configurados com sucesso!"
