@@ -51,7 +51,6 @@ if [ ! -z "$MONGODB_HOST" ]; then
     fi
     
     add_property "$MONGO_FILE" "mongodb.connection-url" "$MONGO_URL"
-    add_property "$MONGO_FILE" "mongodb.database" "$MONGODB_DATABASE"
 fi
 
 echo "Catalogs configurados com sucesso!"
