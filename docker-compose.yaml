@@ -1,23 +1,10 @@
 services:
-  trino-kidopi:
-      image: trinodb/trino:latest
-      container_name: trino-kidopi
-      hostname: trino-kidopi
-      ports:
-        - "${TRINO_PORT:-8080}:8080"
-      volumes:
-        - ./trino/trino-config:/etc/trino
-        - ./trino/init-trino.sh:/docker-entrypoint-init.d/init-trino.sh
-      env_file:
-        - .env
-      entrypoint: ["/bin/bash", "/docker-entrypoint-init.d/init-trino.sh"]
-      networks:
-        - kidopi_sistemas_dev-network
-
-  metabase-kidopi:
+  metabase:
     image: metabase/metabase:latest
     container_name: metabase-kidopi
     hostname: metabase-kidopi
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./metabase/urandom:/dev/random:ro
     ports:
@@ -30,19 +17,18 @@ services:
       MB_DB_PORT: ${METABASE_DB_PORT:-5432}
       MB_DB_USER: ${METABASE_DB_USER:-metabase}
       MB_DB_PASS: ${METABASE_DB_PASSWORD:-metabase_password}
-      MB_DB_HOST: ${METABASE_DB_HOST:-postgres-metabase-kidopi}
+      MB_DB_HOST: ${METABASE_DB_HOST:-postgres-metabase}
     networks:
       - metabase-network
-      - kidopi_sistemas_dev-network
     healthcheck:
       test: curl --fail -I http://localhost:3000/api/health || exit 1
       interval: 15s
       timeout: 5s
       retries: 5
     depends_on:
-      - postgres-metabase-kidopi
+      - postgres-metabase
 
-  postgres-metabase-kidopi:
+  postgres-metabase:
     image: postgres:16
     container_name: postgres-metabase-kidopi
     hostname: postgres-metabase-kidopi
@@ -56,8 +42,6 @@ services:
       - metabase-network
   
 networks:
-  kidopi_sistemas_dev-network:
-    external: true
   metabase-network:
     driver: bridge
 
