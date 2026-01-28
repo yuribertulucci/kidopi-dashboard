@@ -1,0 +1,3 @@
+connector.name=mongodb
+mongodb.connection-url=mongodb://!!!NOME DO SEU CONTAINER MONGODB AQUI!!!:27017
+mongodb.schema-collection=trino-schemas

@@ -1,0 +1,4 @@
+connector.name=mysql
+connection-url=jdbc:mysql://!!!NOME DO SEU CONTAINER MYSQL AQUI!!!:3306/
+connection-user=SEU_USUARIO_AQUI
+connection-password=SUA_SENHA_AQUI

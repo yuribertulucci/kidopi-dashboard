@@ -2,4 +2,5 @@
 
 metabase/*
 trino/trino-config/catalog/*
+!trino/trino-config/catalog/*.example
 trino/trino-data/*
